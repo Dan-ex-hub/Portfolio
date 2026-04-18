@@ -147,6 +147,22 @@ section{min-height:100vh;padding:6rem 2rem;position:relative;z-index:1}
 .submit-btn:active{transform:scale(0.98);box-shadow:var(--glow-strong)}
 .form-response{text-align:center;padding:1rem 2rem;font-family:var(--font-mono);font-size:.85rem;color:#00ff88;display:none}
 
+/* === COMM CHANNELS === */
+.comm-channels{max-width:600px;width:100%;margin:2.5rem auto 0}
+.comm-divider{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.comm-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(0,245,255,0.25),transparent)}
+.comm-divider-text{font-family:var(--font-mono);font-size:.7rem;color:var(--text-dim);letter-spacing:2px;white-space:nowrap}
+.comm-grid{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.comm-card{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1.2rem 1.5rem;background:linear-gradient(135deg,var(--card),rgba(0,245,255,0.02));border:1px solid rgba(0,245,255,0.2);border-radius:12px;text-decoration:none;position:relative;overflow:hidden;flex:1;min-width:160px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.comm-card-glow{position:absolute;inset:0;background:radial-gradient(circle,rgba(0,245,255,0.06) 0%,transparent 70%);opacity:0;transition:opacity .4s}
+.comm-card:hover{transform:translateY(-4px);border-color:rgba(0,245,255,0.5);box-shadow:0 0 25px rgba(0,245,255,0.2),0 0 50px rgba(0,245,255,0.08)}
+.comm-card:hover .comm-card-glow{opacity:1}
+.comm-id{font-family:var(--font-mono);font-size:.55rem;color:var(--text-dim);letter-spacing:2px;opacity:.6}
+.comm-icon{font-size:1.6rem}
+.comm-label{font-family:var(--font-display);font-size:.7rem;color:#fff;letter-spacing:2px}
+.comm-value{font-family:var(--font-mono);font-size:.65rem;color:var(--cyan);letter-spacing:.5px;word-break:break-all;text-align:center;transition:text-shadow .3s}
+.comm-card:hover .comm-value{text-shadow:var(--glow)}
+
 /* === FOOTER === */
 #footer{text-align:center;padding:2rem;border-top:1px solid rgba(0,245,255,0.1);position:relative;z-index:1}
 .footer-text{font-family:var(--font-mono);font-size:.75rem;color:var(--text-dim);letter-spacing:2px}
@@ -163,6 +179,8 @@ section{min-height:100vh;padding:6rem 2rem;position:relative;z-index:1}
 .missions-grid,.skill-trees,.achievements-grid{grid-template-columns:1fr}
 .stats-grid{grid-template-columns:repeat(2,1fr)}
 section{padding:4rem 1rem}
+.comm-grid{flex-direction:column}
+.comm-card{min-width:auto}
 }
 @media(max-width:480px){
 .stats-grid{grid-template-columns:1fr}
