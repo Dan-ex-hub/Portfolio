@@ -4,7 +4,7 @@ A personal portfolio website showcasing projects and skills.
 
 ## Live Deployment
 
-Visit the live portfolio here: [https://portfolio-1vxchwk11-dan-ex-hubs-projects.vercel.app](https://portfolio-1vxchwk11-dan-ex-hubs-projects.vercel.app)
+Visit the live portfolio here: [https://portfolio-nine-orcin-za9hswpw3s.vercel.app/](https://portfolio-nine-orcin-za9hswpw3s.vercel.app/)
 
 ## Project Structure
 
