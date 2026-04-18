@@ -45,7 +45,7 @@ section{min-height:100vh;padding:6rem 2rem;position:relative;z-index:1}
 .badge-avatar{width:100px;height:100px;margin:0 auto 1.5rem;position:relative}
 .avatar-ring{position:absolute;inset:-5px;border:2px solid var(--cyan);border-radius:50%;animation:ring-rotate 4s linear infinite;box-shadow:var(--glow)}
 @keyframes ring-rotate{0%{transform:rotate(0deg);border-color:var(--cyan)}50%{border-color:var(--blue)}100%{transform:rotate(360deg);border-color:var(--cyan)}}
-.avatar-glyph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:2.5rem;font-weight:900;color:var(--cyan);background:linear-gradient(135deg,var(--dark1),var(--dark2));border-radius:50%;text-shadow:var(--glow-strong)}
+.avatar-glyph{width:100%;height:100%;display:block;object-fit:cover;border-radius:50%;background:linear-gradient(135deg,var(--dark1),var(--dark2))}
 .badge-name{font-family:var(--font-display);font-size:clamp(1.3rem,4vw,1.8rem);color:#fff;letter-spacing:4px;margin-bottom:.5rem}
 .badge-title{font-family:var(--font-mono);font-size:1rem;color:var(--cyan);margin-bottom:1.5rem;min-height:1.5em}
 .typing-prefix{color:var(--blue)}
