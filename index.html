@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daniel D'Souza — Full Stack Developer & AI/ML Engineer. Gamified portfolio showcasing projects, skills, and achievements.">
+    <title>Daniel D'Souza | Full Stack Dev & AI/ML Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cursor Trail Canvas -->
+    <canvas id="cursor-trail"></canvas>
+    <!-- Particle Background Canvas -->
+    <canvas id="particles"></canvas>
+    <!-- Scanline Overlay -->
+    <div class="scanline-overlay"></div>
+
+    <!-- Navigation HUD -->
+    <nav id="nav-hud">
+        <div class="nav-logo">
+            <span class="logo-bracket">&lt;</span><span class="logo-text">DD</span><span class="logo-bracket">/&gt;</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link active" data-section="hero">HOME</a></li>
+            <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
+            <li><a href="#projects" class="nav-link" data-section="projects">MISSIONS</a></li>
+            <li><a href="#skills" class="nav-link" data-section="skills">SKILL TREE</a></li>
+            <li><a href="#achievements" class="nav-link" data-section="achievements">ACHIEVEMENTS</a></li>
+            <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="badge-corner tl"></div>
+                <div class="badge-corner tr"></div>
+                <div class="badge-corner bl"></div>
+                <div class="badge-corner br"></div>
+                <div class="badge-status">● ONLINE</div>
+                <div class="badge-avatar">
+                    <div class="avatar-ring"></div>
+                    <div class="avatar-glyph">D</div>
+                </div>
+                <h1 class="badge-name">DANIEL D'SOUZA</h1>
+                <div class="badge-title">
+                    <span class="typing-prefix">&gt; </span>
+                    <span id="typing-text"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <div class="xp-bar-container">
+                    <div class="xp-label">
+                        <span>LEVEL 3 DEVELOPER</span>
+                        <span class="xp-numbers">2450 / 3000 XP</span>
+                    </div>
+                    <div class="xp-bar-track">
+                        <div class="xp-bar-fill" id="xp-fill"></div>
+                    </div>
+                </div>
+                <div class="badge-class">CLASS: FULL STACK MAGE</div>
+            </div>
+            <div class="scroll-indicator">
+                <span>SCROLL TO EXPLORE</span>
+                <div class="scroll-arrow">▼</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="section-header">
+            <div class="section-line"></div>
+            <h2 class="section-title"><span class="section-icon">◆</span> PLAYER STATS</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card" data-animate>
+                <div class="stat-icon">🚀</div>
+                <div class="stat-value" data-count="6">0</div>
+                <div class="stat-label">PROJECTS SHIPPED</div>
+                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:60%"></div></div>
+            </div>
+            <div class="stat-card" data-animate>
+                <div class="stat-icon">🏆</div>
+                <div class="stat-value" data-count="1">0</div>
+                <div class="stat-label">HACKATHONS WON</div>
+                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:30%"></div></div>
+            </div>
+            <div class="stat-card" data-animate>
+                <div class="stat-icon">⚡</div>
+                <div class="stat-value" data-count="15" data-suffix="+">0</div>
+                <div class="stat-label">TECHNOLOGIES</div>
+                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:85%"></div></div>
+            </div>
+            <div class="stat-card" data-animate>
+                <div class="stat-icon">🎓</div>
+                <div class="stat-value stat-text">SFIT</div>
+                <div class="stat-label">TE-IT • COLLEGE</div>
+                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:75%"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS / MISSIONS -->
+    <section id="projects">
+        <div class="section-header">
+            <div class="section-line"></div>
+            <h2 class="section-title"><span class="section-icon">◆</span> MISSION LOG</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="missions-grid">
+            <div class="mission-card" data-animate>
+                <div class="mission-glow"></div>
+                <div class="mission-header">
+                    <span class="mission-id">MSN-001</span>
+                    <span class="mission-status complete">● COMPLETE</span>
+                </div>
+                <h3 class="mission-name">GRID</h3>
+                <p class="mission-desc">A powerful grid-based layout system and management platform for modern web applications.</p>
+                <div class="mission-tags">
+                    <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Express</span>
+                </div>
+                <div class="mission-xp">+400 XP</div>
+            </div>
+            <div class="mission-card" data-animate>
+                <div class="mission-glow"></div>
+                <div class="mission-header">
+                    <span class="mission-id">MSN-002</span>
+                    <span class="mission-status complete">● COMPLETE</span>
+                </div>
+                <h3 class="mission-name">StudyBot</h3>
+                <p class="mission-desc">AI-powered study assistant that helps students learn more effectively with intelligent Q&A.</p>
+                <div class="mission-tags">
+                    <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">FastAPI</span><span class="tag">Gen AI</span>
+                </div>
+                <div class="mission-xp">+500 XP</div>
+            </div>
+            <div class="mission-card" data-animate>
+                <div class="mission-glow"></div>
+                <div class="mission-header">
+                    <span class="mission-id">MSN-003</span>
+                    <span class="mission-status complete">● COMPLETE</span>
+                </div>
+                <h3 class="mission-name">SleepEase</h3>
+                <p class="mission-desc">Sleep tracking and optimization app using ML to analyze and improve sleep patterns.</p>
+                <div class="mission-tags">
+                    <span class="tag">React Native</span><span class="tag">TensorFlow</span><span class="tag">Node.js</span>
+                </div>
+                <div class="mission-xp">+450 XP</div>
+            </div>
+            <div class="mission-card" data-animate>
+                <div class="mission-glow"></div>
+                <div class="mission-header">
+                    <span class="mission-id">MSN-004</span>
+                    <span class="mission-status complete">● COMPLETE</span>
+                </div>
+                <h3 class="mission-name">DL Service</h3>
+                <p class="mission-desc">Deep Learning microservice for real-time model inference and prediction serving at scale.</p>
+                <div class="mission-tags">
+                    <span class="tag">PyTorch</span><span class="tag">Flask</span><span class="tag">Docker</span><span class="tag">Deep Learning</span>
+                </div>
+                <div class="mission-xp">+550 XP</div>
+            </div>
+            <div class="mission-card" data-animate>
+                <div class="mission-glow"></div>
+                <div class="mission-header">
+                    <span class="mission-id">MSN-005</span>
+                    <span class="mission-status complete">● COMPLETE</span>
+                </div>
+                <h3 class="mission-name">Sahaayak</h3>
+                <p class="mission-desc">Community assistance platform connecting volunteers with people in need for social good.</p>
+                <div class="mission-tags">
+                    <span class="tag">MERN Stack</span><span class="tag">Socket.io</span><span class="tag">Maps API</span>
+                </div>
+                <div class="mission-xp">+500 XP</div>
+            </div>
+            <div class="mission-card" data-animate>
+                <div class="mission-glow"></div>
+                <div class="mission-header">
+                    <span class="mission-id">MSN-006</span>
+                    <span class="mission-status complete">● COMPLETE</span>
+                </div>
+                <h3 class="mission-name">Edu Cycle</h3>
+                <p class="mission-desc">Educational resource sharing platform enabling circular economy of learning materials.</p>
+                <div class="mission-tags">
+                    <span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span><span class="tag">Tailwind</span>
+                </div>
+                <div class="mission-xp">+450 XP</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <div class="section-header">
+            <div class="section-line"></div>
+            <h2 class="section-title"><span class="section-icon">◆</span> SKILL TREE</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="skill-trees">
+            <div class="skill-branch" data-animate>
+                <div class="branch-header">
+                    <span class="branch-icon">🎨</span>
+                    <h3 class="branch-name">FRONTEND</h3>
+                    <span class="branch-level">LVL 3</span>
+                </div>
+                <div class="skill-nodes">
+                    <div class="skill-node" data-level="90"><span>React</span><div class="skill-level-bar"><div style="width:90%"></div></div></div>
+                    <div class="skill-node" data-level="85"><span>Next.js</span><div class="skill-level-bar"><div style="width:85%"></div></div></div>
+                    <div class="skill-node" data-level="95"><span>HTML/CSS</span><div class="skill-level-bar"><div style="width:95%"></div></div></div>
+                    <div class="skill-node" data-level="88"><span>JavaScript</span><div class="skill-level-bar"><div style="width:88%"></div></div></div>
+                    <div class="skill-node" data-level="75"><span>TypeScript</span><div class="skill-level-bar"><div style="width:75%"></div></div></div>
+                </div>
+            </div>
+            <div class="skill-branch" data-animate>
+                <div class="branch-header">
+                    <span class="branch-icon">⚙️</span>
+                    <h3 class="branch-name">BACKEND</h3>
+                    <span class="branch-level">LVL 3</span>
+                </div>
+                <div class="skill-nodes">
+                    <div class="skill-node" data-level="88"><span>Node.js</span><div class="skill-level-bar"><div style="width:88%"></div></div></div>
+                    <div class="skill-node" data-level="85"><span>Express</span><div class="skill-level-bar"><div style="width:85%"></div></div></div>
+                    <div class="skill-node" data-level="80"><span>Python</span><div class="skill-level-bar"><div style="width:80%"></div></div></div>
+                    <div class="skill-node" data-level="75"><span>FastAPI</span><div class="skill-level-bar"><div style="width:75%"></div></div></div>
+                    <div class="skill-node" data-level="70"><span>Flask</span><div class="skill-level-bar"><div style="width:70%"></div></div></div>
+                </div>
+            </div>
+            <div class="skill-branch" data-animate>
+                <div class="branch-header">
+                    <span class="branch-icon">🧠</span>
+                    <h3 class="branch-name">AI / ML</h3>
+                    <span class="branch-level">LVL 2</span>
+                </div>
+                <div class="skill-nodes">
+                    <div class="skill-node" data-level="78"><span>TensorFlow</span><div class="skill-level-bar"><div style="width:78%"></div></div></div>
+                    <div class="skill-node" data-level="75"><span>PyTorch</span><div class="skill-level-bar"><div style="width:75%"></div></div></div>
+                    <div class="skill-node" data-level="82"><span>LangChain</span><div class="skill-level-bar"><div style="width:82%"></div></div></div>
+                    <div class="skill-node" data-level="70"><span>Scikit-learn</span><div class="skill-level-bar"><div style="width:70%"></div></div></div>
+                    <div class="skill-node" data-level="80"><span>Gen AI</span><div class="skill-level-bar"><div style="width:80%"></div></div></div>
+                </div>
+            </div>
+            <div class="skill-branch" data-animate>
+                <div class="branch-header">
+                    <span class="branch-icon">🗄️</span>
+                    <h3 class="branch-name">DATABASES</h3>
+                    <span class="branch-level">LVL 2</span>
+                </div>
+                <div class="skill-nodes">
+                    <div class="skill-node" data-level="88"><span>MongoDB</span><div class="skill-level-bar"><div style="width:88%"></div></div></div>
+                    <div class="skill-node" data-level="75"><span>PostgreSQL</span><div class="skill-level-bar"><div style="width:75%"></div></div></div>
+                    <div class="skill-node" data-level="80"><span>MySQL</span><div class="skill-level-bar"><div style="width:80%"></div></div></div>
+                    <div class="skill-node" data-level="65"><span>Redis</span><div class="skill-level-bar"><div style="width:65%"></div></div></div>
+                    <div class="skill-node" data-level="72"><span>Firebase</span><div class="skill-level-bar"><div style="width:72%"></div></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+        <div class="section-header">
+            <div class="section-line"></div>
+            <h2 class="section-title"><span class="section-icon">◆</span> ACHIEVEMENTS UNLOCKED</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="achievements-grid">
+            <div class="achievement-card unlocked" data-animate>
+                <div class="ach-glow"></div>
+                <div class="ach-icon">🥈</div>
+                <div class="ach-info">
+                    <h3>2nd Prize Hackathon 2026</h3>
+                    <p>Competed against top talent and secured runner-up position</p>
+                </div>
+                <div class="ach-rarity">RARE</div>
+            </div>
+            <div class="achievement-card unlocked" data-animate>
+                <div class="ach-glow"></div>
+                <div class="ach-icon">📜</div>
+                <div class="ach-info">
+                    <h3>MERN Stack Certified</h3>
+                    <p>Mastered the full MERN development stack</p>
+                </div>
+                <div class="ach-rarity">EPIC</div>
+            </div>
+            <div class="achievement-card unlocked" data-animate>
+                <div class="ach-glow"></div>
+                <div class="ach-icon">🤖</div>
+                <div class="ach-info">
+                    <h3>Gen AI Bootcamp</h3>
+                    <p>Completed intensive Generative AI training program</p>
+                </div>
+                <div class="ach-rarity">LEGENDARY</div>
+            </div>
+            <div class="achievement-card unlocked" data-animate>
+                <div class="ach-glow"></div>
+                <div class="ach-icon">🎯</div>
+                <div class="ach-info">
+                    <h3>6 Missions Complete</h3>
+                    <p>Successfully shipped 6 production-grade projects</p>
+                </div>
+                <div class="ach-rarity">EPIC</div>
+            </div>
+            <div class="achievement-card unlocked" data-animate>
+                <div class="ach-glow"></div>
+                <div class="ach-icon">🧠</div>
+                <div class="ach-info">
+                    <h3>Deep Learning Specialist</h3>
+                    <p>Built and deployed DL models for real-world inference</p>
+                </div>
+                <div class="ach-rarity">RARE</div>
+            </div>
+            <div class="achievement-card unlocked" data-animate>
+                <div class="ach-glow"></div>
+                <div class="ach-icon">💻</div>
+                <div class="ach-info">
+                    <h3>Full Stack Mage</h3>
+                    <p>Reached Level 3 in both frontend and backend mastery</p>
+                </div>
+                <div class="ach-rarity">LEGENDARY</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-header">
+            <div class="section-line"></div>
+            <h2 class="section-title"><span class="section-icon">◆</span> ESTABLISH COMMS</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="terminal-form" data-animate>
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <span class="terminal-title">daniel@portfolio:~$ contact</span>
+            </div>
+            <form id="contact-form" action="https://formspree.io/f/mdaygjqp" method="POST">
+                <div class="form-group">
+                    <label for="name">&gt; IDENTIFY_YOURSELF:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name..." required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">&gt; COMM_FREQUENCY:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email..." required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="message">&gt; TRANSMIT_MESSAGE:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Type your message..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span class="btn-text">[ SEND TRANSMISSION ]</span>
+                    <span class="btn-glow"></span>
+                </button>
+            </form>
+            <div class="form-response" id="form-response"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-grid-line"></div>
+        <p class="footer-text">DESIGNED & BUILT BY <span class="footer-name">DANIEL D'SOUZA</span> • 2026</p>
+        <p class="footer-sub">[ SYSTEM OPERATIONAL ]</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
