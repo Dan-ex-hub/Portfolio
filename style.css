@@ -91,6 +91,9 @@ section{min-height:100vh;padding:6rem 2rem;position:relative;z-index:1}
 .mission-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
 .tag{background:rgba(0,245,255,0.08);border:1px solid rgba(0,245,255,0.2);color:var(--cyan);font-family:var(--font-mono);font-size:.65rem;padding:.25rem .6rem;border-radius:4px;letter-spacing:1px}
 .mission-xp{font-family:var(--font-display);font-size:.8rem;color:#00ff88;letter-spacing:1px}
+.mission-links{margin-bottom:.8rem}
+.mission-github-link{font-family:var(--font-mono);font-size:.7rem;color:var(--cyan);letter-spacing:1px;text-decoration:none;border:1px solid rgba(0,245,255,0.2);padding:.35rem .8rem;border-radius:6px;transition:all .3s;display:inline-block;background:rgba(0,245,255,0.04)}
+.mission-github-link:hover{background:rgba(0,245,255,0.12);border-color:var(--cyan);box-shadow:var(--glow);color:#fff;text-shadow:var(--glow)}
 
 /* === SKILL TREE === */
 .skill-trees{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
