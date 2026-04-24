@@ -131,7 +131,7 @@
 // === XP BAR ANIMATION ===
 window.addEventListener('load', () => {
   setTimeout(() => {
-    document.getElementById('xp-fill').style.width = '82%';
+    document.getElementById('xp-fill').style.width = '79%';
   }, 500);
 });
 

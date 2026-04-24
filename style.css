@@ -79,7 +79,7 @@ section{min-height:100vh;padding:6rem 2rem;position:relative;z-index:1}
 /* === MISSION CARDS === */
 .missions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;max-width:1200px;margin:0 auto}
 .mission-card{background:linear-gradient(135deg,var(--card),rgba(0,128,255,0.03));border:1px solid rgba(0,245,255,0.12);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
-.mission-glow{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(0,245,255,0.04) 0%,transparent 70%);opacity:0;transition:opacity .5s}
+.mission-glow{position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(0,245,255,0.04) 0%,transparent 70%);opacity:0;transition:opacity .5s;pointer-events:none}
 .mission-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 0 40px rgba(0,245,255,0.15);border-color:rgba(0,245,255,0.4)}
 .mission-card:hover .mission-glow{opacity:1}
 .mission-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
