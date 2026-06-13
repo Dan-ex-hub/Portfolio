@@ -123,7 +123,7 @@ window.addEventListener('load', () => {
     { name: 'GRID', tag: 'ML Platform', desc: 'A grid-based layout system and management platform with applied machine learning for modern web apps.', tags: ['React', 'Machine Learning', 'XGBoost', 'LightGBM'], link: 'https://github.com/vinitgirdhar/GRID_', img: 'screenshots/grid.jpg' },
     { name: 'Sahaayak', tag: 'MERN', desc: 'Community assistance platform connecting volunteers with people in need for social good.', tags: ['MERN', 'Socket.io', 'Maps API'], link: 'https://github.com/vinitgirdhar/Sahaayak' },
     { name: 'Smart DL Services', tag: 'GovTech', desc: 'A G2C platform simplifying RTO tasks like DL and Learner\u2019s License applications, reducing paperwork for citizens.', tags: ['HTML', 'Python', 'JavaScript', 'CSS'], link: 'https://github.com/Dan-ex-hub/smart-dl-services' },
-    { name: 'SleepEase', tag: 'Health ML', desc: 'Sleep tracking and optimization app using ML to analyze and improve sleep patterns.', tags: ['React Native', 'MongoDB', 'Node.js'], link: 'https://github.com/Dan-ex-hub' }
+    { name: 'SleepEase', tag: 'Health ML', desc: 'Sleep tracking and optimization app using ML to analyze and improve sleep patterns.', tags: ['React Native', 'MongoDB', 'Node.js'], link: 'https://sleep-ease-three.vercel.app/', img: 'screenshots/sleepease.jpg' }
   ];
   const grads = ['linear-gradient(135deg,#FF5C38,#7C5CFF)', 'linear-gradient(135deg,#7C5CFF,#27c2a0)', 'linear-gradient(135deg,#27c2a0,#FF5C38)', 'linear-gradient(135deg,#ff8a5c,#7C5CFF)'];
 
