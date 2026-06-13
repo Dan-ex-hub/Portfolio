@@ -1,509 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Daniel D'Souza — Full Stack Developer & AI/ML Engineer. Gamified portfolio showcasing projects, skills, and achievements.">
-    <title>Daniel D'Souza | Full Stack Dev & AI/ML Engineer</title>
+    <meta name="description" content="Daniel D'Souza — Full Stack Developer & AI/ML Engineer. Building intelligent products with clean engineering.">
+    <title>Daniel D'Souza — Full Stack & AI/ML Engineer</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="aether.css">
 </head>
 <body>
-    <!-- Cursor Trail Canvas -->
-    <canvas id="cursor-trail"></canvas>
-    <!-- Particle Background Canvas -->
-    <canvas id="particles"></canvas>
-    <!-- Scanline Overlay -->
-    <div class="scanline-overlay"></div>
+    <!-- Aurora background + grain -->
+    <div class="aurora" aria-hidden="true">
+        <span class="aurora-blob a1"></span>
+        <span class="aurora-blob a2"></span>
+        <span class="aurora-blob a3"></span>
+    </div>
+    <div class="grain" aria-hidden="true"></div>
 
-    <!-- Navigation HUD -->
-    <nav id="nav-hud">
-        <div class="nav-logo">
-            <span class="logo-bracket">&lt;</span><span class="logo-text">DD</span><span class="logo-bracket">/&gt;</span>
+    <!-- Custom cursor -->
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <header class="nav" id="nav">
+        <a href="#top" class="nav-mark" data-magnetic>DD<span class="dot">.</span></a>
+        <nav class="nav-links">
+            <a href="#work" class="nav-item" data-magnetic>Work</a>
+            <a href="#live" class="nav-item" data-magnetic>Live</a>
+            <a href="#stack" class="nav-item" data-magnetic>Stack</a>
+            <a href="#certs" class="nav-item" data-magnetic>Certs</a>
+            <a href="#contact" class="nav-item" data-magnetic>Contact</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" data-magnetic>
+                <span class="theme-icon sun">☀</span>
+                <span class="theme-icon moon">☾</span>
+            </button>
+            <button class="menu-btn" id="menu-btn" aria-label="Open menu"><span></span><span></span></button>
         </div>
-        <ul class="nav-links">
-            <li><a href="#hero" class="nav-link active" data-section="hero">HOME</a></li>
-            <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
-            <li><a href="#projects" class="nav-link" data-section="projects">MISSIONS</a></li>
-            <li><a href="#deployments" class="nav-link" data-section="deployments">LIVE</a></li>
-            <li><a href="#skills" class="nav-link" data-section="skills">SKILL TREE</a></li>
-            <li><a href="#achievements" class="nav-link" data-section="achievements">ACHIEVEMENTS</a></li>
-            <li><a href="#certificates" class="nav-link" data-section="certificates">CERTS</a></li>
-            <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
-        </ul>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+    </header>
 
-    <!-- HERO SECTION -->
-    <section id="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <div class="badge-corner tl"></div>
-                <div class="badge-corner tr"></div>
-                <div class="badge-corner bl"></div>
-                <div class="badge-corner br"></div>
-                <div class="badge-status">● ONLINE</div>
-                <div class="badge-avatar">
-                    <div class="avatar-ring"></div>
-                    <img src="profile.jpg" alt="Daniel D'Souza" class="avatar-glyph">
-                </div>
-                <h1 class="badge-name">DANIEL D'SOUZA</h1>
-                <div class="badge-title">
-                    <span class="typing-prefix">&gt; </span>
-                    <span id="typing-text"></span>
-                    <span class="typing-cursor">|</span>
-                </div>
-                <div class="xp-bar-container">
-                    <div class="xp-label">
-                        <span>LEVEL 4 DEVELOPER</span>
-                        <span class="xp-numbers">3950 / 5000 XP</span>
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#work">Work</a>
+        <a href="#live">Live</a>
+        <a href="#stack">Stack</a>
+        <a href="#certs">Certs</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-meta reveal">
+                <span class="status-dot"></span>
+                <span>Available for work</span>
+                <span class="sep">/</span>
+                <span>Mumbai, IN</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="line"><span class="word">Daniel</span></span>
+                <span class="line"><span class="word">D'Souza</span></span>
+            </h1>
+            <div class="hero-sub reveal">
+                <p>Full Stack Developer <span class="amp">&</span> AI/ML Engineer crafting intelligent, end-to-end products — from data pipelines and models to the interfaces people love.</p>
+            </div>
+            <div class="hero-cta reveal">
+                <a href="#work" class="btn btn-primary" data-magnetic>View work</a>
+                <a href="#contact" class="btn btn-ghost" data-magnetic>Get in touch</a>
+            </div>
+            <div class="hero-scroll reveal">
+                <span>Scroll</span>
+                <span class="scroll-line"></span>
+            </div>
+        </section>
+
+        <!-- MARQUEE -->
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>React</span><span>•</span><span>Next.js</span><span>•</span><span>Python</span><span>•</span><span>Node.js</span><span>•</span><span>FastAPI</span><span>•</span><span>LangChain</span><span>•</span><span>TensorFlow</span><span>•</span><span>PyTorch</span><span>•</span><span>MongoDB</span><span>•</span><span>PostgreSQL</span><span>•</span><span>TypeScript</span><span>•</span>
+                <span>React</span><span>•</span><span>Next.js</span><span>•</span><span>Python</span><span>•</span><span>Node.js</span><span>•</span><span>FastAPI</span><span>•</span><span>LangChain</span><span>•</span><span>TensorFlow</span><span>•</span><span>PyTorch</span><span>•</span><span>MongoDB</span><span>•</span><span>PostgreSQL</span><span>•</span><span>TypeScript</span><span>•</span>
+            </div>
+        </div>
+
+        <!-- ABOUT / BENTO -->
+        <section class="section" id="about">
+            <div class="section-head">
+                <span class="eyebrow reveal">01 — About</span>
+                <h2 class="section-title reveal">Engineering across the full stack, with a bias for intelligent systems.</h2>
+            </div>
+            <div class="bento">
+                <div class="bento-card span-2 reveal">
+                    <img src="profile.jpg" alt="Daniel D'Souza" class="bento-avatar">
+                    <div>
+                        <h3>Hi, I'm Daniel.</h3>
+                        <p>I'm a TE-IT student at SFIT and a builder at heart. I move comfortably between React frontends, Node/Python backends, and ML pipelines — shipping projects that combine solid engineering with applied AI.</p>
                     </div>
-                    <div class="xp-bar-track">
-                        <div class="xp-bar-fill" id="xp-fill"></div>
+                </div>
+                <div class="bento-card stat reveal">
+                    <span class="stat-num" data-count="7">0</span>
+                    <span class="stat-label">Projects shipped</span>
+                </div>
+                <div class="bento-card stat reveal">
+                    <span class="stat-num" data-count="15" data-suffix="+">0</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+                <div class="bento-card reveal">
+                    <span class="card-kicker">Recognition</span>
+                    <h3 class="card-big">2nd Place</h3>
+                    <p>Hackathon 2026 — runner-up against top student teams.</p>
+                </div>
+                <div class="bento-card span-2 now reveal">
+                    <span class="card-kicker">Currently building</span>
+                    <h3>World Impact Monitor</h3>
+                    <p>A real-time 3D/2D geospatial platform tracking global events across markets, geopolitics and the environment — with AI-driven news summarization.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK -->
+        <section class="section" id="work">
+            <div class="section-head">
+                <span class="eyebrow reveal">02 — Selected Work</span>
+                <h2 class="section-title reveal">Things I've designed, built and shipped.</h2>
+            </div>
+            <div class="work-list" id="work-list"><!-- injected by aether.js --></div>
+        </section>
+
+        <!-- LIVE DEPLOYMENTS -->
+        <section class="section" id="live">
+            <div class="section-head">
+                <span class="eyebrow reveal">03 — Live</span>
+                <h2 class="section-title reveal">Deployed and running in production.</h2>
+            </div>
+            <div class="live-grid">
+                <a href="https://world-imapct-monitor.vercel.app" target="_blank" rel="noopener noreferrer" class="live-card reveal" data-tilt>
+                    <div class="browser">
+                        <div class="browser-bar"><span></span><span></span><span></span><i>world-imapct-monitor.vercel.app</i></div>
+                        <div class="browser-shot"><img src="screenshots/world-impact-monitor.jpg" alt="World Impact Monitor" loading="lazy"></div>
+                    </div>
+                    <div class="live-meta"><h3>World Impact Monitor</h3><span class="live-go">Open ↗</span></div>
+                </a>
+                <a href="https://study-bot-seven.vercel.app" target="_blank" rel="noopener noreferrer" class="live-card reveal" data-tilt>
+                    <div class="browser">
+                        <div class="browser-bar"><span></span><span></span><span></span><i>study-bot-seven.vercel.app</i></div>
+                        <div class="browser-shot"><img src="screenshots/study-bot.jpg" alt="StudyBot" loading="lazy"></div>
+                    </div>
+                    <div class="live-meta"><h3>StudyBot</h3><span class="live-go">Open ↗</span></div>
+                </a>
+                <a href="https://educycle-production.up.railway.app/" target="_blank" rel="noopener noreferrer" class="live-card reveal" data-tilt>
+                    <div class="browser">
+                        <div class="browser-bar"><span></span><span></span><span></span><i>educycle-production.up.railway.app</i></div>
+                        <div class="browser-shot"><img src="screenshots/educycle.jpg" alt="Edu Cycle" loading="lazy"></div>
+                    </div>
+                    <div class="live-meta"><h3>Edu Cycle</h3><span class="live-go">Open ↗</span></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- STACK -->
+        <section class="section" id="stack">
+            <div class="section-head">
+                <span class="eyebrow reveal">04 — Stack</span>
+                <h2 class="section-title reveal">Tools I reach for.</h2>
+            </div>
+            <div class="stack-grid" id="stack-grid"><!-- injected by aether.js --></div>
+        </section>
+
+        <!-- CERTIFICATES -->
+        <section class="section" id="certs">
+            <div class="section-head">
+                <span class="eyebrow reveal">05 — Credentials</span>
+                <h2 class="section-title reveal">Certifications & achievements.</h2>
+            </div>
+            <div class="cert-rail-wrap reveal">
+                <div class="cert-rail" id="cert-rail"><!-- injected by aether.js --></div>
+            </div>
+            <div class="cert-controls reveal">
+                <button id="cert-prev" aria-label="Previous" data-magnetic>←</button>
+                <button id="cert-next" aria-label="Next" data-magnetic>→</button>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section contact" id="contact">
+            <div class="contact-inner">
+                <span class="eyebrow reveal">06 — Contact</span>
+                <h2 class="contact-title reveal">Let's build<br>something good.</h2>
+                <div class="contact-cols">
+                    <form id="contact-form" action="https://formspree.io/f/mdaygjqp" method="POST" class="reveal">
+                        <div class="field">
+                            <input type="text" id="name" name="name" placeholder=" " required autocomplete="name">
+                            <label for="name">Your name</label>
+                        </div>
+                        <div class="field">
+                            <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="field">
+                            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary full" id="submit-btn" data-magnetic>Send message</button>
+                        <p class="form-response" id="form-response"></p>
+                    </form>
+                    <div class="contact-channels reveal">
+                        <a href="mailto:danrose200@gmail.com" class="channel" data-magnetic>
+                            <span class="channel-label">Email</span>
+                            <span class="channel-value">danrose200@gmail.com</span>
+                        </a>
+                        <a href="tel:+919404464836" class="channel" data-magnetic>
+                            <span class="channel-label">Phone</span>
+                            <span class="channel-value">+91 94044 64836</span>
+                        </a>
+                        <a href="https://github.com/Dan-ex-hub" target="_blank" rel="noopener noreferrer" class="channel" data-magnetic>
+                            <span class="channel-label">GitHub</span>
+                            <span class="channel-value">@Dan-ex-hub</span>
+                        </a>
                     </div>
                 </div>
-                <div class="badge-class">CLASS: FULL STACK MAGE</div>
             </div>
-            <div class="scroll-indicator">
-                <span>SCROLL TO EXPLORE</span>
-                <div class="scroll-arrow">▼</div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- ABOUT SECTION -->
-    <section id="about">
-        <div class="section-header">
-            <div class="section-line"></div>
-            <h2 class="section-title"><span class="section-icon">◆</span> PLAYER STATS</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="stats-grid">
-            <div class="stat-card" data-animate>
-                <div class="stat-icon">🚀</div>
-                <div class="stat-value" data-count="7">0</div>
-                <div class="stat-label">PROJECTS SHIPPED</div>
-                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:70%"></div></div>
-            </div>
-            <div class="stat-card" data-animate>
-                <div class="stat-icon">🏆</div>
-                <div class="stat-value" data-count="1">0</div>
-                <div class="stat-label">HACKATHONS WON</div>
-                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:30%"></div></div>
-            </div>
-            <div class="stat-card" data-animate>
-                <div class="stat-icon">⚡</div>
-                <div class="stat-value" data-count="15" data-suffix="+">0</div>
-                <div class="stat-label">TECHNOLOGIES</div>
-                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:85%"></div></div>
-            </div>
-            <div class="stat-card" data-animate>
-                <div class="stat-icon">🎓</div>
-                <div class="stat-value stat-text">SFIT</div>
-                <div class="stat-label">TE-IT • COLLEGE</div>
-                <div class="stat-bar"><div class="stat-bar-fill" style="--fill:75%"></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS / MISSIONS -->
-    <section id="projects">
-        <div class="section-header">
-            <div class="section-line"></div>
-            <h2 class="section-title"><span class="section-icon">◆</span> MISSION LOG</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="missions-grid">
-            <div class="mission-card" data-animate>
-                <div class="mission-glow"></div>
-                <div class="mission-header">
-                    <span class="mission-id">MSN-001</span>
-                    <span class="mission-status complete">● COMPLETE</span>
-                </div>
-                <h3 class="mission-name">GRID</h3>
-                <p class="mission-desc">A powerful grid-based layout system and management platform for modern web applications.</p>
-                <div class="mission-tags">
-                    <span class="tag">React</span><span class="tag">Machine Learning</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span>
-                </div>
-                <div class="mission-links">
-                    <a href="https://github.com/vinitgirdhar/GRID_" target="_blank" rel="noopener noreferrer" class="mission-github-link">⟶ VIEW ON GITHUB</a>
-                </div>
-                <div class="mission-xp">+800 XP</div>
-            </div>
-            <div class="mission-card" data-animate>
-                <div class="mission-glow"></div>
-                <div class="mission-header">
-                    <span class="mission-id">MSN-002</span>
-                    <span class="mission-status complete">● COMPLETE</span>
-                </div>
-                <h3 class="mission-name">StudyBot</h3>
-                <p class="mission-desc">AI-powered study assistant that helps students learn more effectively with intelligent Q&A.</p>
-                <div class="mission-tags">
-                    <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">FastAPI</span><span class="tag">Gen AI</span>
-                </div>
-                <div class="mission-links">
-                    <a href="https://github.com/Dan-ex-hub/study-bot" target="_blank" rel="noopener noreferrer" class="mission-github-link">⟶ VIEW ON GITHUB</a>
-                </div>
-                <div class="mission-xp">+300 XP</div>
-            </div>
-            <div class="mission-card" data-animate>
-                <div class="mission-glow"></div>
-                <div class="mission-header">
-                    <span class="mission-id">MSN-003</span>
-                    <span class="mission-status complete">● COMPLETE</span>
-                </div>
-                <h3 class="mission-name">SleepEase</h3>
-                <p class="mission-desc">Sleep tracking and optimization app using ML to analyze and improve sleep patterns.</p>
-                <div class="mission-tags">
-                    <span class="tag">React Native</span><span class="tag">MongoDB</span><span class="tag">Node.js</span>
-                </div>
-                <div class="mission-links">
-                    <a href="https://github.com/Dan-ex-hub" target="_blank" rel="noopener noreferrer" class="mission-github-link">⟶ VIEW ON GITHUB</a>
-                </div>
-                <div class="mission-xp">+450 XP</div>
-            </div>
-            <div class="mission-card" data-animate>
-                <div class="mission-glow"></div>
-                <div class="mission-header">
-                    <span class="mission-id">MSN-004</span>
-                    <span class="mission-status complete">● COMPLETE</span>
-                </div>
-                <h3 class="mission-name">Smart DL Services</h3>
-                <p class="mission-desc">A G2C platform simplifying RTO tasks like DL and Learner's License applications. Reduces paperwork and speeds up processes for citizens.</p>
-                <div class="mission-tags">
-                    <span class="tag">HTML</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">CSS</span>
-                </div>
-                <div class="mission-links">
-                    <a href="https://github.com/Dan-ex-hub/smart-dl-services" target="_blank" rel="noopener noreferrer" class="mission-github-link">⟶ VIEW ON GITHUB</a>
-                </div>
-                <div class="mission-xp">+550 XP</div>
-            </div>
-            <div class="mission-card" data-animate>
-                <div class="mission-glow"></div>
-                <div class="mission-header">
-                    <span class="mission-id">MSN-005</span>
-                    <span class="mission-status complete">● COMPLETE</span>
-                </div>
-                <h3 class="mission-name">Sahaayak</h3>
-                <p class="mission-desc">Community assistance platform connecting volunteers with people in need for social good.</p>
-                <div class="mission-tags">
-                    <span class="tag">MERN Stack</span><span class="tag">Socket.io</span><span class="tag">Maps API</span>
-                </div>
-                <div class="mission-links">
-                    <a href="https://github.com/vinitgirdhar/Sahaayak" target="_blank" rel="noopener noreferrer" class="mission-github-link">⟶ VIEW ON GITHUB</a>
-                </div>
-                <div class="mission-xp">+500 XP</div>
-            </div>
-            <div class="mission-card" data-animate>
-                <div class="mission-glow"></div>
-                <div class="mission-header">
-                    <span class="mission-id">MSN-006</span>
-                    <span class="mission-status complete">● COMPLETE</span>
-                </div>
-                <h3 class="mission-name">Edu Cycle</h3>
-                <p class="mission-desc">Educational resource sharing platform enabling circular economy of learning materials.</p>
-                <div class="mission-tags">
-                    <span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">Tailwind</span>
-                </div>
-                <div class="mission-links">
-                    <a href="https://github.com/Dan-ex-hub/Educycle" target="_blank" rel="noopener noreferrer" class="mission-github-link">⟶ VIEW ON GITHUB</a>
-                </div>
-                <div class="mission-xp">+450 XP</div>
-            </div>
-            <div class="mission-card" data-animate>
-                <div class="mission-glow"></div>
-                <div class="mission-header">
-                    <span class="mission-id">MSN-007</span>
-                    <span class="mission-status complete">● COMPLETE</span>
-                </div>
-                <h3 class="mission-name">Futures Predictor</h3>
-                <p class="mission-desc">AI-driven futures trade prediction system for GC, ES, NQ & CL. Combines ICT price-action (order blocks, FVGs, liquidity sweeps), HMM regime detection, CME order-flow delta, and a stacked XGBoost + LightGBM + CatBoost ensemble with meta-model signal filtering.</p>
-                <div class="mission-tags">
-                    <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">CatBoost</span><span class="tag">HMM</span><span class="tag">Order Flow</span>
-                </div>
-                <div class="mission-links">
-                    <a href="https://github.com/Dan-ex-hub/Futures_EQ_CL_GC-predictor" target="_blank" rel="noopener noreferrer" class="mission-github-link">⟶ VIEW ON GITHUB</a>
-                </div>
-                <div class="mission-xp">+900 XP</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LIVE DEPLOYMENTS -->
-    <section id="deployments">
-        <div class="section-header">
-            <div class="section-line"></div>
-            <h2 class="section-title"><span class="section-icon">◆</span> LIVE DEPLOYMENTS</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="deploy-grid">
-            <a href="https://world-imapct-monitor.vercel.app" target="_blank" rel="noopener noreferrer" class="deploy-card" data-animate>
-                <div class="deploy-shot">
-                    <img src="screenshots/world-impact-monitor.jpg" alt="World Impact Monitor live preview" loading="lazy">
-                    <div class="deploy-overlay"><span class="deploy-launch">▶ LAUNCH</span></div>
-                </div>
-                <div class="deploy-meta">
-                    <div class="deploy-status"><span class="deploy-dot"></span> LIVE</div>
-                    <h3 class="deploy-name">World Impact Monitor</h3>
-                    <p class="deploy-url">world-imapct-monitor.vercel.app</p>
-                </div>
-            </a>
-            <a href="https://study-bot-seven.vercel.app" target="_blank" rel="noopener noreferrer" class="deploy-card" data-animate>
-                <div class="deploy-shot">
-                    <img src="screenshots/study-bot.jpg" alt="StudyBot live preview" loading="lazy">
-                    <div class="deploy-overlay"><span class="deploy-launch">▶ LAUNCH</span></div>
-                </div>
-                <div class="deploy-meta">
-                    <div class="deploy-status"><span class="deploy-dot"></span> LIVE</div>
-                    <h3 class="deploy-name">StudyBot</h3>
-                    <p class="deploy-url">study-bot-seven.vercel.app</p>
-                </div>
-            </a>
-            <a href="https://educycle-production.up.railway.app/" target="_blank" rel="noopener noreferrer" class="deploy-card" data-animate>
-                <div class="deploy-shot">
-                    <img src="screenshots/educycle.jpg" alt="Edu Cycle live preview" loading="lazy">
-                    <div class="deploy-overlay"><span class="deploy-launch">▶ LAUNCH</span></div>
-                </div>
-                <div class="deploy-meta">
-                    <div class="deploy-status"><span class="deploy-dot"></span> LIVE</div>
-                    <h3 class="deploy-name">Edu Cycle</h3>
-                    <p class="deploy-url">educycle-production.up.railway.app</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills">
-        <div class="section-header">
-            <div class="section-line"></div>
-            <h2 class="section-title"><span class="section-icon">◆</span> SKILL TREE</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="skill-trees">
-            <div class="skill-branch" data-animate>
-                <div class="branch-header">
-                    <span class="branch-icon">🎨</span>
-                    <h3 class="branch-name">FRONTEND</h3>
-                    <span class="branch-level">LVL 3</span>
-                </div>
-                <div class="skill-nodes">
-                    <div class="skill-node" data-level="92"><span>React</span><div class="skill-level-bar"><div style="width:92%"></div></div></div>
-                    <div class="skill-node" data-level="88"><span>Next.js</span><div class="skill-level-bar"><div style="width:88%"></div></div></div>
-                    <div class="skill-node" data-level="96"><span>HTML/CSS</span><div class="skill-level-bar"><div style="width:96%"></div></div></div>
-                    <div class="skill-node" data-level="88"><span>JavaScript</span><div class="skill-level-bar"><div style="width:88%"></div></div></div>
-                    <div class="skill-node" data-level="75"><span>TypeScript</span><div class="skill-level-bar"><div style="width:75%"></div></div></div>
-                </div>
-            </div>
-            <div class="skill-branch" data-animate>
-                <div class="branch-header">
-                    <span class="branch-icon">⚙️</span>
-                    <h3 class="branch-name">BACKEND</h3>
-                    <span class="branch-level">LVL 3</span>
-                </div>
-                <div class="skill-nodes">
-                    <div class="skill-node" data-level="90"><span>Node.js</span><div class="skill-level-bar"><div style="width:90%"></div></div></div>
-                    <div class="skill-node" data-level="85"><span>Express</span><div class="skill-level-bar"><div style="width:85%"></div></div></div>
-                    <div class="skill-node" data-level="95"><span>Python</span><div class="skill-level-bar"><div style="width:95%"></div></div></div>
-                    <div class="skill-node" data-level="80"><span>FastAPI</span><div class="skill-level-bar"><div style="width:80%"></div></div></div>
-                    <div class="skill-node" data-level="70"><span>Flask</span><div class="skill-level-bar"><div style="width:70%"></div></div></div>
-                </div>
-            </div>
-            <div class="skill-branch" data-animate>
-                <div class="branch-header">
-                    <span class="branch-icon">🧠</span>
-                    <h3 class="branch-name">AI / ML</h3>
-                    <span class="branch-level">LVL 2</span>
-                </div>
-                <div class="skill-nodes">
-                    <div class="skill-node" data-level="78"><span>TensorFlow</span><div class="skill-level-bar"><div style="width:78%"></div></div></div>
-                    <div class="skill-node" data-level="75"><span>PyTorch</span><div class="skill-level-bar"><div style="width:75%"></div></div></div>
-                    <div class="skill-node" data-level="85"><span>LangChain</span><div class="skill-level-bar"><div style="width:85%"></div></div></div>
-                    <div class="skill-node" data-level="80"><span>Scikit-learn</span><div class="skill-level-bar"><div style="width:80%"></div></div></div>
-                    <div class="skill-node" data-level="88"><span>Gen AI</span><div class="skill-level-bar"><div style="width:88%"></div></div></div>
-                </div>
-            </div>
-            <div class="skill-branch" data-animate>
-                <div class="branch-header">
-                    <span class="branch-icon">🗄️</span>
-                    <h3 class="branch-name">DATABASES</h3>
-                    <span class="branch-level">LVL 2</span>
-                </div>
-                <div class="skill-nodes">
-                    <div class="skill-node" data-level="90"><span>MongoDB</span><div class="skill-level-bar"><div style="width:90%"></div></div></div>
-                    <div class="skill-node" data-level="80"><span>PostgreSQL</span><div class="skill-level-bar"><div style="width:80%"></div></div></div>
-                    <div class="skill-node" data-level="80"><span>MySQL</span><div class="skill-level-bar"><div style="width:80%"></div></div></div>
-                    <div class="skill-node" data-level="65"><span>Redis</span><div class="skill-level-bar"><div style="width:65%"></div></div></div>
-                    <div class="skill-node" data-level="72"><span>Firebase</span><div class="skill-level-bar"><div style="width:72%"></div></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ACHIEVEMENTS -->
-    <section id="achievements">
-        <div class="section-header">
-            <div class="section-line"></div>
-            <h2 class="section-title"><span class="section-icon">◆</span> ACHIEVEMENTS UNLOCKED</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="achievements-grid">
-            <div class="achievement-card unlocked" data-animate>
-                <div class="ach-glow"></div>
-                <div class="ach-icon">🥈</div>
-                <div class="ach-info">
-                    <h3>2nd Prize Hackathon 2026</h3>
-                    <p>Competed against top talent and secured runner-up position</p>
-                </div>
-                <div class="ach-rarity legendary">LEGENDARY</div>
-            </div>
-            <div class="achievement-card unlocked" data-animate>
-                <div class="ach-glow"></div>
-                <div class="ach-icon">📜</div>
-                <div class="ach-info">
-                    <h3>MERN Stack Certified</h3>
-                    <p>Mastered the full MERN development stack</p>
-                </div>
-                <div class="ach-rarity legendary">LEGENDARY</div>
-            </div>
-            <div class="achievement-card unlocked" data-animate>
-                <div class="ach-glow"></div>
-                <div class="ach-icon">🤖</div>
-                <div class="ach-info">
-                    <h3>Gen AI Bootcamp</h3>
-                    <p>Completed intensive Generative AI training program</p>
-                </div>
-                <div class="ach-rarity epic">EPIC</div>
-            </div>
-            <div class="achievement-card unlocked" data-animate>
-                <div class="ach-glow"></div>
-                <div class="ach-icon">🎯</div>
-                <div class="ach-info">
-                    <h3>7 Missions Complete</h3>
-                    <p>Successfully shipped 7 production-grade projects</p>
-                </div>
-                <div class="ach-rarity epic">EPIC</div>
-            </div>
-            <div class="achievement-card unlocked" data-animate>
-                <div class="ach-glow"></div>
-                <div class="ach-icon">🧠</div>
-                <div class="ach-info">
-                    <h3>Deep Learning Specialist</h3>
-                    <p>Built and deployed DL models for real-world inference</p>
-                </div>
-                <div class="ach-rarity rare">RARE</div>
-            </div>
-            <div class="achievement-card unlocked" data-animate>
-                <div class="ach-glow"></div>
-                <div class="ach-icon">💻</div>
-                <div class="ach-info">
-                    <h3>Full Stack Mage</h3>
-                    <p>Reached Level 3 in both frontend and backend mastery</p>
-                </div>
-                <div class="ach-rarity rare">RARE</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="section-header">
-            <div class="section-line"></div>
-            <h2 class="section-title"><span class="section-icon">◆</span> ESTABLISH COMMS</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="terminal-form" data-animate>
-            <div class="terminal-header">
-                <div class="terminal-dots">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                </div>
-                <span class="terminal-title">daniel@portfolio:~$ contact</span>
-            </div>
-            <form id="contact-form" action="https://formspree.io/f/mdaygjqp" method="POST">
-                <div class="form-group">
-                    <label for="name">&gt; IDENTIFY_YOURSELF:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name..." required autocomplete="name">
-                </div>
-                <div class="form-group">
-                    <label for="email">&gt; COMM_FREQUENCY:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email..." required autocomplete="email">
-                </div>
-                <div class="form-group">
-                    <label for="message">&gt; TRANSMIT_MESSAGE:</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Type your message..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn" id="submit-btn">
-                    <span class="btn-text">[ SEND TRANSMISSION ]</span>
-                    <span class="btn-glow"></span>
-                </button>
-            </form>
-            <div class="form-response" id="form-response"></div>
-        </div>
-
-        <!-- Direct Contact Channels -->
-        <div class="comm-channels">
-            <div class="comm-divider">
-                <span class="comm-divider-line"></span>
-                <span class="comm-divider-text">OR REACH ME DIRECTLY</span>
-                <span class="comm-divider-line"></span>
-            </div>
-            <div class="comm-grid">
-                <a href="mailto:danrose200@gmail.com" class="comm-card" id="comm-email">
-                    <div class="comm-card-glow"></div>
-                    <span class="comm-id">COMM_CHANNEL_01</span>
-                    <span class="comm-icon">📧</span>
-                    <span class="comm-label">EMAIL</span>
-                    <span class="comm-value">danrose200@gmail.com</span>
-                </a>
-                <a href="tel:+919404464836" class="comm-card" id="comm-phone">
-                    <div class="comm-card-glow"></div>
-                    <span class="comm-id">COMM_CHANNEL_02</span>
-                    <span class="comm-icon">📞</span>
-                    <span class="comm-label">PHONE</span>
-                    <span class="comm-value">+91-9404464836</span>
-                </a>
-                <a href="https://github.com/Dan-ex-hub" target="_blank" rel="noopener noreferrer" class="comm-card" id="comm-github">
-                    <div class="comm-card-glow"></div>
-                    <span class="comm-id">COMM_CHANNEL_03</span>
-                    <span class="comm-icon">🐙</span>
-                    <span class="comm-label">GITHUB</span>
-                    <span class="comm-value">Dan-ex-hub</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CERTIFICATES -->
-    <section id="certificates">
-        <div class="section-header">
-            <div class="section-line"></div>
-            <h2 class="section-title"><span class="section-icon">◆</span> CERTIFICATIONS</h2>
-            <div class="section-line"></div>
-        </div>
-        <div class="cert-carousel" data-animate>
-            <button class="cert-nav cert-prev" id="cert-prev" aria-label="Previous certificate">‹</button>
-            <div class="cert-viewport" id="cert-viewport">
-                <div class="cert-track" id="cert-track">
-                    <!-- Cards injected by script.js -->
-                </div>
-            </div>
-            <button class="cert-nav cert-next" id="cert-next" aria-label="Next certificate">›</button>
-        </div>
-        <div class="cert-dots" id="cert-dots"></div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="footer">
-        <div class="footer-grid-line"></div>
-        <p class="footer-text">DESIGNED & BUILT BY <span class="footer-name">DANIEL D'SOUZA</span> • 2026</p>
-        <p class="footer-sub">[ SYSTEM OPERATIONAL ]</p>
+    <footer class="footer">
+        <span>© 2026 Daniel D'Souza</span>
+        <span class="footer-mid">Designed & built from scratch</span>
+        <a href="#top" class="back-top" data-magnetic>Back to top ↑</a>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+    <script src="aether.js"></script>
 </body>
 </html>
