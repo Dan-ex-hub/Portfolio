@@ -266,3 +266,154 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   });
 });
 
+
+// === CERTIFICATES CAROUSEL ===
+(function initCertificates() {
+  const track = document.getElementById('cert-track');
+  const viewport = document.getElementById('cert-viewport');
+  const dotsWrap = document.getElementById('cert-dots');
+  const prevBtn = document.getElementById('cert-prev');
+  const nextBtn = document.getElementById('cert-next');
+  if (!track) return;
+
+  // Certificate files (in /Certificate folder) with display names
+  const certs = [
+    { file: 'DANIEL – Hackathon Certificate.pdf', name: 'Hackathon Certificate' },
+    { file: 'My_Bharat_Certificate.png', name: 'My Bharat' },
+    { file: 'DANIEL DSOUZA.pdf', name: 'Certificate of Achievement' },
+    { file: 'Colloquium25_231029 (1).pdf', name: 'Colloquium 2025' },
+    { file: 'Colloquium25_231029 (2).pdf', name: 'Colloquium 2025' },
+    { file: 'bWqaecPDbYAwSDqJy_Sj7temL583QAYpHXD_6a2ac24d47a1e24579b1e4da_1781262752507_completion_certificate.pdf', name: 'Course Completion' },
+    { file: 'io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a2ac24d47a1e24579b1e4da_1781259811907_completion_certificate.pdf', name: 'Course Completion' },
+    { file: 'io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a2ac24d47a1e24579b1e4da_1781259811907_completion_certificate(1).pdf', name: 'Course Completion' },
+    { file: 'Certificate(1).pdf', name: 'Certificate' },
+    { file: 'certificate.pdf', name: 'Certificate' },
+    { file: '1VDpRY.pdf', name: 'Certificate' },
+    { file: '2mN9as (2).pdf', name: 'Certificate' },
+    { file: '3y8yB.pdf', name: 'Certificate' },
+    { file: 'AsDeY.pdf', name: 'Certificate' },
+    { file: 'cfFWv.pdf', name: 'Certificate' },
+    { file: 'DmFcn.pdf', name: 'Certificate' },
+    { file: 'Z25ozL7 (3).pdf', name: 'Certificate' },
+    { file: 'Z2e0CFN.pdf', name: 'Certificate' },
+    { file: 'Z58CrS.pdf', name: 'Certificate' }
+  ];
+
+  // Build cards
+  certs.forEach((c, i) => {
+    const url = 'Certificate/' + c.file;
+    const isImage = /\.(png|jpe?g|webp|gif)$/i.test(c.file);
+    const card = document.createElement('div');
+    card.className = 'cert-card';
+    const id = String(i + 1).padStart(2, '0');
+    const previewInner = isImage
+      ? `<img src="${url}" alt="${c.name}" loading="lazy">`
+      : `<iframe data-src="${url}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" title="${c.name}" scrolling="no"></iframe>
+         <span class="cert-placeholder">LOADING PREVIEW…</span>`;
+    card.innerHTML = `
+      <a href="${url}" target="_blank" rel="noopener noreferrer">
+        <div class="cert-preview">
+          ${previewInner}
+          <div class="cert-overlay"><span class="cert-view-btn">[ VIEW ]</span></div>
+        </div>
+        <div class="cert-meta">
+          <div class="cert-id">CERT-${id}</div>
+          <div class="cert-name">${c.name}</div>
+        </div>
+      </a>`;
+    track.appendChild(card);
+  });
+
+  const cards = Array.from(track.children);
+  let index = 0;
+
+  // Dots
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'cert-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to certificate ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function step() {
+    if (!cards[0]) return 0;
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+    return cards[0].getBoundingClientRect().width + gap;
+  }
+
+  function maxIndex() {
+    const perView = Math.max(1, Math.floor(viewport.clientWidth / step()));
+    return Math.max(0, cards.length - perView);
+  }
+
+  // Lazy-load PDF iframes near the active index
+  function loadNear() {
+    cards.forEach((card, i) => {
+      if (Math.abs(i - index) <= 3) {
+        const frame = card.querySelector('iframe[data-src]');
+        if (frame) {
+          frame.src = frame.dataset.src;
+          frame.removeAttribute('data-src');
+          frame.addEventListener('load', () => {
+            const ph = card.querySelector('.cert-placeholder');
+            if (ph) ph.remove();
+          });
+        }
+      }
+    });
+  }
+
+  function update() {
+    index = Math.max(0, Math.min(index, maxIndex()));
+    track.style.transform = `translateX(${-index * step()}px)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index >= maxIndex();
+    loadNear();
+  }
+
+  function goTo(i) { index = i; update(); }
+  prevBtn.addEventListener('click', () => { index--; update(); });
+  nextBtn.addEventListener('click', () => { index++; update(); });
+
+  // Drag / swipe support
+  let startX = 0, dragging = false, moved = 0;
+  function pointerDown(x) { dragging = true; startX = x; moved = 0; track.classList.add('dragging'); }
+  function pointerMove(x) {
+    if (!dragging) return;
+    moved = x - startX;
+    track.style.transform = `translateX(${-index * step() + moved}px)`;
+  }
+  function pointerUp() {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove('dragging');
+    const threshold = step() * 0.2;
+    if (moved < -threshold) index++;
+    else if (moved > threshold) index--;
+    update();
+  }
+
+  viewport.addEventListener('mousedown', e => { e.preventDefault(); pointerDown(e.clientX); });
+  window.addEventListener('mousemove', e => pointerMove(e.clientX));
+  window.addEventListener('mouseup', pointerUp);
+  viewport.addEventListener('touchstart', e => pointerDown(e.touches[0].clientX), { passive: true });
+  viewport.addEventListener('touchmove', e => pointerMove(e.touches[0].clientX), { passive: true });
+  viewport.addEventListener('touchend', pointerUp);
+
+  // Prevent link navigation right after a drag
+  track.addEventListener('click', e => { if (Math.abs(moved) > 5) e.preventDefault(); }, true);
+
+  window.addEventListener('resize', update);
+  update();
+
+  // GSAP entrance
+  if (window.gsap) {
+    gsap.from('.cert-carousel', {
+      scrollTrigger: { trigger: '#certificates', start: 'top 80%' },
+      y: 60, opacity: 0, duration: 0.8
+    });
+  }
+})();
