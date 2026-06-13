@@ -218,9 +218,16 @@ gsap.utils.toArray('.achievement-card').forEach((card, i) => {
   });
 });
 
+// Live deployment cards
+gsap.utils.toArray('.deploy-card').forEach((card, i) => {
+  gsap.from(card, {
+    scrollTrigger: { trigger: card, start: 'top 85%' },
+    y: 70, opacity: 0, duration: 0.7, delay: i * 0.12
+  });
+});
+
 // Terminal form
-gsap.from('.terminal-form', {
-  scrollTrigger: { trigger: '.terminal-form', start: 'top 85%' },
+gsap.from('.terminal-form', {  scrollTrigger: { trigger: '.terminal-form', start: 'top 85%' },
   y: 60, opacity: 0, duration: 0.8
 });
 
