@@ -279,13 +279,10 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
   // Certificate files (in /Certificate folder) with display names
   const certs = [
     { file: 'DANIEL – Hackathon Certificate.pdf', name: 'Hackathon Certificate' },
-    { file: 'My_Bharat_Certificate.png', name: 'My Bharat' },
-    { file: 'DANIEL DSOUZA.pdf', name: 'Certificate of Achievement' },
     { file: 'Colloquium25_231029 (1).pdf', name: 'Colloquium 2025' },
     { file: 'Colloquium25_231029 (2).pdf', name: 'Colloquium 2025' },
     { file: 'bWqaecPDbYAwSDqJy_Sj7temL583QAYpHXD_6a2ac24d47a1e24579b1e4da_1781262752507_completion_certificate.pdf', name: 'Course Completion' },
     { file: 'io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a2ac24d47a1e24579b1e4da_1781259811907_completion_certificate.pdf', name: 'Course Completion' },
-    { file: 'io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_6a2ac24d47a1e24579b1e4da_1781259811907_completion_certificate(1).pdf', name: 'Course Completion' },
     { file: 'Certificate(1).pdf', name: 'Certificate' },
     { file: 'certificate.pdf', name: 'Certificate' },
     { file: '1VDpRY.pdf', name: 'Certificate' },
