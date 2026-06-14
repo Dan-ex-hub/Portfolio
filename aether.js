@@ -176,10 +176,12 @@ window.addEventListener('load', () => {
   const grid = document.getElementById('stack-grid');
   if (!grid) return;
   const cols = [
-    { h: 'Frontend', items: [['React', '92'], ['Next.js', '88'], ['TypeScript', '78'], ['HTML / CSS', '96'], ['JavaScript', '90']] },
-    { h: 'Backend', items: [['Node.js', '90'], ['Express', '85'], ['Python', '95'], ['FastAPI', '82'], ['Flask', '72']] },
-    { h: 'AI / ML', items: [['Gen AI', '88'], ['LangChain', '85'], ['TensorFlow', '78'], ['PyTorch', '76'], ['Scikit-learn', '80']] },
-    { h: 'Data', items: [['MongoDB', '90'], ['PostgreSQL', '82'], ['MySQL', '80'], ['Redis', '66'], ['Firebase', '72']] }
+    { h: 'Languages', items: [['Python', '95'], ['JavaScript', '90'], ['TypeScript', '80'], ['Java', '72'], ['C++', '70'], ['C', '68']] },
+    { h: 'Frontend', items: [['React', '92'], ['Next.js', '88'], ['AngularJS', '75'], ['HTML / CSS', '96'], ['Tailwind', '85']] },
+    { h: 'Backend', items: [['Node.js', '90'], ['Express.js', '86'], ['Django', '82'], ['FastAPI', '80'], ['REST APIs', '88']] },
+    { h: 'AI / ML', items: [['XGBoost', '88'], ['LightGBM', '85'], ['CatBoost', '82'], ['Gen AI', '88'], ['LangChain', '84'], ['HMM', '75']] },
+    { h: 'Databases', items: [['MongoDB', '90'], ['MySQL', '82'], ['SQLite', '80'], ['PostgreSQL', '78']] },
+    { h: 'Tools', items: [['Git', '92'], ['VS Code', '95'], ['Cursor AI', '88'], ['Electron', '75'], ['Claude Code', '85']] }
   ];
   cols.forEach(c => {
     const d = document.createElement('div');
@@ -266,13 +268,13 @@ window.addEventListener('load', () => {
 
   // drag
   let startX = 0, dragging = false, moved = 0;
-  const down = x => { dragging = true; startX = x; moved = 0; rail.classList.add('dragging'); };
+  const down = x => { dragging = true; startX = x; moved = 0; rail.classList.add('dragging'); stopAuto(); };
   const move = x => { if (!dragging) return; moved = x - startX; rail.style.transform = `translateX(${-index * step() + moved}px)`; };
   const up = () => {
     if (!dragging) return; dragging = false; rail.classList.remove('dragging');
     const th = step() * 0.2;
     if (moved < -th) index++; else if (moved > th) index--;
-    update();
+    update(); startAuto();
   };
   rail.addEventListener('mousedown', e => { e.preventDefault(); down(e.clientX); });
   window.addEventListener('mousemove', e => move(e.clientX));
@@ -282,8 +284,16 @@ window.addEventListener('load', () => {
   rail.addEventListener('touchend', up);
   rail.addEventListener('click', e => { if (Math.abs(moved) > 5) e.preventDefault(); }, true);
 
+  // auto-advance (marquee-style), pauses on hover/drag
+  let timer = null;
+  function startAuto() { if (timer) return; timer = setInterval(() => { index = index >= maxIndex() ? 0 : index + 1; update(); }, 3500); }
+  function stopAuto() { clearInterval(timer); timer = null; }
+  rail.addEventListener('mouseenter', stopAuto);
+  rail.addEventListener('mouseleave', startAuto);
+
   window.addEventListener('resize', update);
   update();
+  startAuto();
 })();
 
 /* ---------- CONTACT FORM ---------- */
