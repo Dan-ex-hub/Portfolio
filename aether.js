@@ -202,6 +202,7 @@ window.addEventListener('load', () => {
   const nextBtn = document.getElementById('cert-next');
   const data = [
     { file: 'DANIEL – Hackathon Certificate.pdf', name: 'Hackathon Certificate' },
+    { file: '0dbb7a86-c3b0-4977-b1b6-09e97edd19f6.pdf', name: 'Certificate' },
     { file: 'Colloquium25_231029 (1).pdf', name: 'Colloquium 2025' },
     { file: 'Colloquium25_231029 (2).pdf', name: 'Colloquium 2025' },
     { file: 'bWqaecPDbYAwSDqJy_Sj7temL583QAYpHXD_6a2ac24d47a1e24579b1e4da_1781262752507_completion_certificate.pdf', name: 'Course Completion' },
